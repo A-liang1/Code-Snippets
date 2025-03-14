@@ -8,8 +8,8 @@ function createWindow(): void {
   const mainWindow = new BrowserWindow({
     width: 500,
     height: 600,
-    x: 200,
-    y: 700,
+    x: 500,
+    y: 350,
     show: false,
     transparent: true,
     frame: false,
@@ -23,7 +23,7 @@ function createWindow(): void {
   })
 
   // 打开调试窗口
-  // mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
 
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
