@@ -1,5 +1,6 @@
 import useCode from '@renderer/hooks/useCode'
 import { useEffect, useState } from 'react'
+import styles from './styles.module.scss'
 
 export default function Result() {
   const { data } = useCode()
@@ -12,7 +13,7 @@ export default function Result() {
         setCurrentIndex((pre) => (pre - 1 < 0 ? data.length - 1 : pre - 1))
         break
       case 'ArrowDown':
-        setCurrentIndex((pre) => (pre + 1 > data.length ? 0 : pre + 1))
+        setCurrentIndex((pre) => (pre + 1 >= data.length ? 0 : pre + 1))
         break
     }
   }
@@ -28,10 +29,9 @@ export default function Result() {
   // 闭包，这个函数一直不回发生改变，都是那唯一的一个函数，
   // 那么函数中用到外层的数据就会形成一个作用域，数据会保留
   return (
-    <main className="bg-slate-50 px-3 rounded-bl-lg rounded-br-lg -mt-[7px] pb-2">
-      {currentIndex}
-      {data.map((item) => (
-        <div key={item.id} className="text-slate-700 truncate mb-2">
+    <main className={styles.main}>
+      {data.map((item, index) => (
+        <div key={item.id} className={currentIndex === index ? styles.active : ''}>
           {item.content}
         </div>
       ))}
