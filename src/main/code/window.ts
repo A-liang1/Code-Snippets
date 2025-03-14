@@ -1,10 +1,9 @@
 import { BrowserWindow, shell } from 'electron'
 import { join } from 'path'
 import icon from '../../../resources/icon.png?asset'
-import * as ipc from './ipc'
 import { is } from '@electron-toolkit/utils'
 
-export function createWindow(): void {
+export function createWindow(): BrowserWindow {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 500,
@@ -23,8 +22,6 @@ export function createWindow(): void {
     }
   })
 
-  //
-  ipc.registerIpc(mainWindow)
   // 打开调试窗口
   mainWindow.webContents.openDevTools()
 
@@ -44,4 +41,6 @@ export function createWindow(): void {
   } else {
     mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
   }
+
+  return mainWindow
 }
