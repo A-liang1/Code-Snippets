@@ -25,14 +25,19 @@ export default () => {
           // setCurrentIndex((pre) => (pre + 1 > data.length - 1 ? 0 : pre + 1))
           break
         case 'Enter': {
-          const content = data.find((item) => item.id === id)?.content
-          console.log(content)
-          if (content) navigator.clipboard.writeText(content)
+          selectItem(id)
         }
       }
     },
     [data, id]
   )
+  // 选择某一项的操作
+  function selectItem(id: number) {
+    const content = data.find((item) => item.id === id)?.content
+    if (content) navigator.clipboard.writeText(content)
+    window.api.hideWindow()
+  }
+
   // 为什么放到useEffect中？因为每次触发这个事件，意味着data数据发生了改变，
   // 则会引起组件重新渲染，组件中的内容重新执行一次，然后有定义了一个keydown事件
   useEffect(() => {
@@ -46,5 +51,5 @@ export default () => {
   }, [handleKeyEvent])
   useEffect(() => setId(0), [data])
 
-  return { data, id }
+  return { data, id, selectItem }
 }
