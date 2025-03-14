@@ -1,9 +1,15 @@
+// import useCode from './useCode'
 import { useCallback, useEffect, useState } from 'react'
-import useCode from './useCode'
+import { useStore } from '@renderer/store/useStore'
 
 export default () => {
-  const { data } = useCode()
-  // const [currentIndex, setCurrentIndex] = useState(0)
+  // const { data, setData } = useCode()
+  // 全局状态
+  const data = useStore((state) => state.data)
+  const setData = useStore((state) => state.setData)
+  const setSearch = useStore((state) => state.setSearch)
+  // 这种情况如果只用页面只用了a，但是b改变了，则组件也要重新渲染，性能不好
+  // const { data, setData } = useStore((state) => state)
   const [id, setId] = useState(0)
   const handleKeyEvent = useCallback(
     (e: KeyboardEvent) => {
@@ -32,9 +38,11 @@ export default () => {
     [data, id]
   )
   // 选择某一项的操作
-  function selectItem(id: number) {
+  async function selectItem(id: number) {
     const content = data.find((item) => item.id === id)?.content
-    if (content) navigator.clipboard.writeText(content)
+    if (content) await navigator.clipboard.writeText(content)
+    setData([])
+    setSearch('')
     window.api.hideWindow()
   }
 
