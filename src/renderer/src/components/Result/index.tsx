@@ -1,6 +1,11 @@
 import useCode from '@renderer/hooks/useCode'
 import { useEffect, useState } from 'react'
-import styles from './styles.module.scss'
+import './styles.scss'
+import { Div } from './styled'
+// import classNames from 'classnames'
+// classnames包，写样式
+// import styles from './styles.module.scss'
+// css模块化 styles.main
 
 export default function Result() {
   const { data } = useCode()
@@ -15,6 +20,9 @@ export default function Result() {
       case 'ArrowDown':
         setCurrentIndex((pre) => (pre + 1 >= data.length ? 0 : pre + 1))
         break
+      case 'Enter':
+        console.log(data[currentIndex].content)
+        navigator.clipboard.writeText(data[currentIndex].content)
     }
   }
   // 为什么放到useEffect中？因为每次触发这个事件，意味着data数据发生了改变，
@@ -25,15 +33,15 @@ export default function Result() {
     return () => {
       document.removeEventListener('keydown', handleKeyEvent)
     }
-  }, [data])
+  }, [data, currentIndex])
   // 闭包，这个函数一直不回发生改变，都是那唯一的一个函数，
   // 那么函数中用到外层的数据就会形成一个作用域，数据会保留
   return (
-    <main className={styles.main}>
+    <main className="main">
       {data.map((item, index) => (
-        <div key={item.id} className={currentIndex === index ? styles.active : ''}>
+        <Div isActive={currentIndex === index} key={item.id}>
           {item.content}
-        </div>
+        </Div>
       ))}
     </main>
   )
