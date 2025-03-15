@@ -6,6 +6,7 @@ declare global {
     api: {
       hideWindow: () => void
       shortCut: (type: 'search', shortCut: string) => Promise<boolean>
+      setIgnoreMouseEvents: (ignore: boolean, options?: { forward: boolean }) => void
     }
   }
 }

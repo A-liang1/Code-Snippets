@@ -4,9 +4,10 @@ import { Input } from 'antd'
 
 export default function Search() {
   const { search, handleSearch } = useSearch()
+
   return (
     <main className="bg-slate-50 p-2 rounded-lg drag">
-      <section className="bg-slate-200 p-1 rounded-lg flex items-center gap-1 nodrag">
+      <section className="bg-slate-200 p-2 rounded-lg flex items-center gap-1 nodrag">
         <SettingOne
           theme="outline"
           size="24"
@@ -19,10 +20,10 @@ export default function Search() {
           value={search}
           onChange={handleSearch}
           autoFocus
-          className="w-full outline-none text-sm text-slate-600 bg-slate-300 rounded-md p-1"
+          className="w-full outline-none text-base text-slate-600 bg-slate-300 rounded-md p-1"
         />
       </section>
-      <section className="text-center text-red-500 text-sm mt-1">代码片段</section>
+      <section className="text-center text-red-500 text-sm">代码片段</section>
     </main>
   )
 }

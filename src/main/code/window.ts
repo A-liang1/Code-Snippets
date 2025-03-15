@@ -6,13 +6,13 @@ import { is } from '@electron-toolkit/utils'
 export function createWindow(): BrowserWindow {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 300,
-    height: 600,
+    width: 400,
+    height: 400,
     x: 500,
     y: 350,
     show: false,
-    transparent: true,
     frame: false,
+    transparent: true,
     alwaysOnTop: true,
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
@@ -22,6 +22,8 @@ export function createWindow(): BrowserWindow {
     }
   })
 
+  // 忽略鼠标事件
+  mainWindow.setIgnoreMouseEvents(true, { forward: true })
   // 打开调试窗口
   mainWindow.webContents.openDevTools()
 
