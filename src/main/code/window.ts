@@ -6,7 +6,7 @@ import { is } from '@electron-toolkit/utils'
 export function createWindow(): BrowserWindow {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 500,
+    width: 300,
     height: 600,
     x: 500,
     y: 350,

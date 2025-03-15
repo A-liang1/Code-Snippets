@@ -1,5 +1,5 @@
 // import useCode from './useCode'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect } from 'react'
 import { useStore } from '@renderer/store/useStore'
 
 export default () => {
@@ -8,26 +8,29 @@ export default () => {
   const data = useStore((state) => state.data)
   const setData = useStore((state) => state.setData)
   const setSearch = useStore((state) => state.setSearch)
+  const id = useStore((state) => state.id)
+  const setId = useStore((state) => state.setId)
   // 这种情况如果只用页面只用了a，但是b改变了，则组件也要重新渲染，性能不好
   // const { data, setData } = useStore((state) => state)
-  const [id, setId] = useState(0)
+  // const [id, setId] = useState(0)
   const handleKeyEvent = useCallback(
     (e: KeyboardEvent) => {
       if (data.length === 0) return
-      console.log(e.code)
       switch (e.code) {
         case 'ArrowUp':
-          setId((id) => {
+          {
+            e.preventDefault()
             const index = data.findIndex((item) => item.id === id)
-            return data[index - 1]?.id || data[data.length - 1].id
-          })
+            setId(data[index - 1]?.id || data[data.length - 1].id)
+          }
           // setCurrentIndex((pre) => (pre - 1 < 0 ? data.length - 1 : pre - 1))
           break
         case 'ArrowDown':
-          setId((id) => {
+          {
+            e.preventDefault()
             const index = data.findIndex((item) => item.id === id)
-            return data[index + 1]?.id || data[0].id
-          })
+            setId(data[index + 1]?.id || data[0].id)
+          }
           // setCurrentIndex((pre) => (pre + 1 > data.length - 1 ? 0 : pre + 1))
           break
         case 'Enter': {
@@ -57,7 +60,7 @@ export default () => {
     // 闭包，这个函数一直不回发生改变，都是那唯一的一个函数，
     // 那么函数中用到外层的数据就会形成一个作用域，数据会保留
   }, [handleKeyEvent])
-  useEffect(() => setId(0), [data])
+  useEffect(() => setId(data[0]?.id || 0), [data])
 
   return { data, id, selectItem }
 }

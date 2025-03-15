@@ -1,13 +1,13 @@
 import './styles.scss'
 // import { Div } from './styled'
 import classNames from 'classnames'
-import useCodeSelect from '@renderer/hooks/useCodeSelect'
+import useSelect from '@renderer/hooks/useSelect'
 // classnames包，写样式
 // import styles from './styles.module.scss'
 // css模块化 styles.main
 
 export default function Result() {
-  const { data, id, selectItem } = useCodeSelect()
+  const { data, id, selectItem } = useSelect()
   return (
     <main className="result">
       {data.map((item) => (

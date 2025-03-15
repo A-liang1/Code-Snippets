@@ -14,11 +14,13 @@ function App(): JSX.Element {
   return (
     <>
       <StyleSheetManager shouldForwardProp={isPropValid}>
-        <Error />
-        {/* <CodeProvider> */}
-        <Search></Search>
-        <Result></Result>
-        {/* </CodeProvider> */}
+        <main className="relative">
+          <Error />
+          {/* <CodeProvider> */}
+          <Search></Search>
+          <Result></Result>
+          {/* </CodeProvider> */}
+        </main>
       </StyleSheetManager>
     </>
   )
