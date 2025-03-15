@@ -14,7 +14,7 @@ export default function Search() {
           fill="#34495e"
           strokeWidth={4}
           className="cursor-pointer"
-          onClick={() => alert('显示配置页')}
+          onClick={() => window.api.openConfigWindow()}
         />
         <Input
           value={search}

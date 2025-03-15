@@ -2,6 +2,7 @@ appId: com.electron.app
 productName: code-snippets
 directories:
   buildResources: build
+  output: dist_new
 files:
   - '!**/.vscode/*'
   - '!src/*'
@@ -13,6 +14,10 @@ asarUnpack:
   - resources/**
 win:
   executableName: code-snippets
+  target:
+    - portable
+    - zip
+  artifactName: ${name}-${version}-${arch}.${ext}
 nsis:
   artifactName: ${name}-${version}-setup.${ext}
   shortcutName: ${productName}

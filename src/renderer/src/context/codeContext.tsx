@@ -8,7 +8,7 @@ interface ContextProps {
 
 export const codeContext = createContext<ContextProps | undefined>(undefined)
 
-export const CodeProvider = ({ children }: Props) => {
+export const CodeProvider = ({ children }) => {
   const [data, setData] = useState<DataType[]>([])
 
   return <codeContext.Provider value={{ data, setData }}>{children}</codeContext.Provider>

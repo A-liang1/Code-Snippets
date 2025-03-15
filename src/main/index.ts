@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain } from 'electron'
+import { app, ipcMain } from 'electron'
 
 import { electronApp, optimizer } from '@electron-toolkit/utils'
 import './code'
@@ -23,7 +23,7 @@ app.whenReady().then(() => {
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
-    if (BrowserWindow.getAllWindows().length === 0) code.createWindow()
+    // if (BrowserWindow.getAllWindows().length === 0) code.createWindow()
   })
 })
 
