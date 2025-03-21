@@ -11,17 +11,17 @@ import { applyThemeToCSS, useThemeStore } from '@renderer/store/themeStore'
 
 // <StyleSheetManager shouldForwardProp={...}>
 function Home(): JSX.Element {
-  const { theme } = useThemeStore()
+  const { themeType } = useThemeStore()
 
   const mainRef = useRef<HTMLDivElement | null>(null)
 
   const { setIgnoreMouseEvents } = useignoreMouseEvents()
 
   useEffect(() => {
-    applyThemeToCSS(theme)
+    applyThemeToCSS(themeType)
     setIgnoreMouseEvents(mainRef as MutableRefObject<HTMLDivElement>)
-    window.api.openConfigWindow()
-  }, [theme])
+    // window.api.openConfigWindow()
+  }, [themeType])
 
   const { register } = useShortCut()
   register('search', 'CommandOrControl+Shift+;')

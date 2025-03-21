@@ -10,14 +10,6 @@ export default function Search() {
 
   const openConfigWindow = () => {
     window.api.openConfigWindow()
-    // window.api
-    //   .sql(`insert into categories (name,created_at) values('react19',datetime())`, 'insert')
-    //   .then((rows) => {
-    //     console.log(rows)
-    //   })
-    //   .catch((error) => {
-    //     console.warn(error)
-    //   })
   }
 
   const items: MenuProps['items'] = [

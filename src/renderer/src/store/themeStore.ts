@@ -6,51 +6,8 @@ interface StoreInterface {
   set: (key: string, value: unknown) => void
 }
 
-// 定义主题的类型
-interface Theme {
-  background: string
-  inputText: string
-  inputBackground: string
-  searchBackground: string
-  searchText: string
-  searchSelectionBg: string
-  searchSelectionText: string
-}
-
 // 主题类型，只保留三种主题
 export type ThemeType = 'light' | 'dark' | 'pink'
-
-const defaultTheme: Theme = {
-  background: '#1a1b1e',
-  inputText: '#e6e6e6',
-  inputBackground: '#242424',
-  searchBackground: '#2d2d2d',
-  searchText: '#adb5bd',
-  searchSelectionBg: '#3d4d6b',
-  searchSelectionText: '#ffffff'
-}
-
-const themes: Record<ThemeType, Theme> = {
-  light: {
-    background: '#f8f9fa',
-    inputText: '#2d3436',
-    inputBackground: '#ffffff',
-    searchBackground: '#e9ecef',
-    searchText: '#495057',
-    searchSelectionBg: '#4dabf7',
-    searchSelectionText: '#ffffff'
-  },
-  dark: defaultTheme,
-  pink: {
-    background: '#ffebf2',
-    inputText: '#333333',
-    inputBackground: '#fff0f5',
-    searchBackground: '#fff0f5',
-    searchText: '#4b0022',
-    searchSelectionBg: '#ff80ab',
-    searchSelectionText: '#ffffff'
-  }
-}
 
 // 创建一个本地临时缓存，用于在渲染进程缓存主题设置
 // 这样可以避免频繁的 IPC 通信
@@ -86,7 +43,6 @@ const store: StoreInterface = {
 
 // 定义状态的类型
 interface ThemeStore {
-  theme: Theme
   themeType: ThemeType
   setTheme: (themeType: ThemeType) => void
   toggleTheme: () => void
@@ -95,18 +51,14 @@ interface ThemeStore {
 export const useThemeStore = create<ThemeStore>((set, get) => ({
   // 初始化时从本地存储获取主题类型
   themeType: store.get('themeType') as ThemeType,
-  // 使用预定义主题
-  theme: themes[store.get('themeType') as ThemeType] || themes.light,
 
   setTheme: (themeType: ThemeType) => {
-    const theme = themes[themeType]
-
     // 更新本地存储
     store.set('themeType', themeType)
 
     // 更新状态
-    set({ themeType, theme })
-    applyThemeToCSS(theme)
+    set({ themeType })
+    applyThemeToCSS(themeType)
   },
 
   toggleTheme: () => {
@@ -118,11 +70,17 @@ export const useThemeStore = create<ThemeStore>((set, get) => ({
   }
 }))
 
-export const applyThemeToCSS = (theme: Theme) => {
+export const applyThemeToCSS = (themeType: ThemeType) => {
   const root = document.documentElement
   root.style.transition = 'all 0.5s ease' // 添加过渡效果，缩短过渡时间
-  Object.entries(theme).forEach(([key, value]) => {
-    root.style.setProperty(`--${key}`, value)
-  })
+
+  // 使用data-theme属性来切换主题
+  root.setAttribute('data-theme', themeType)
+
   setTimeout(() => (root.style.transition = ''), 500) // 清除过渡，缩短时间
 }
+
+// 在导入模块时立即应用存储的主题
+// 这样可以确保在组件挂载前就应用了正确的主题
+const initialTheme = store.get('themeType') as ThemeType
+applyThemeToCSS(initialTheme)

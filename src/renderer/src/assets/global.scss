@@ -1,3 +1,45 @@
+@import './styles/variables';
+
+:root {
+  --background: #{$pink-background};
+  --inputText: #{$pink-inputText};
+  --inputBackground: #{$pink-inputBackground};
+  --searchBackground: #{$pink-searchBackground};
+  --searchText: #{$pink-searchText};
+  --searchSelectionBg: #{$pink-searchSelectionBg};
+  --searchSelectionText: #{$pink-searchSelectionText};
+}
+
+[data-theme='dark'] {
+  --background: #{$dark-background};
+  --inputText: #{$dark-inputText};
+  --inputBackground: #{$dark-inputBackground};
+  --searchBackground: #{$dark-searchBackground};
+  --searchText: #{$dark-searchText};
+  --searchSelectionBg: #{$dark-searchSelectionBg};
+  --searchSelectionText: #{$dark-searchSelectionText};
+}
+
+[data-theme='light'] {
+  --background: #{$light-background};
+  --inputText: #{$light-inputText};
+  --inputBackground: #{$light-inputBackground};
+  --searchBackground: #{$light-searchBackground};
+  --searchText: #{$light-searchText};
+  --searchSelectionBg: #{$light-searchSelectionBg};
+  --searchSelectionText: #{$light-searchSelectionText};
+}
+
+[data-theme='pink'] {
+  --background: #{$pink-background};
+  --inputText: #{$pink-inputText};
+  --inputBackground: #{$pink-inputBackground};
+  --searchBackground: #{$pink-searchBackground};
+  --searchText: #{$pink-searchText};
+  --searchSelectionBg: #{$pink-searchSelectionBg};
+  --searchSelectionText: #{$pink-searchSelectionText};
+}
+
 body {
   // @apply bg-black;
   @apply w-screen h-screen;
