@@ -16,5 +16,6 @@
   }
   .content {
     grid-area: content;
+    @apply overflow-y-auto;
   }
 }

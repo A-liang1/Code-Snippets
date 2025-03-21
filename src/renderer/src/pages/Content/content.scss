@@ -1,6 +1,6 @@
 .content-page {
   h1 {
-    @apply text-base font-bold text-slate-600 opacity-95;
+    @apply text-base font-bold text-slate-600 opacity-95 overflow-y-auto;
   }
 
   .content {
