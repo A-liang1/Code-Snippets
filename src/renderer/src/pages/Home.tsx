@@ -7,16 +7,20 @@ import useShortCut from '@renderer/hooks/useShortCut'
 import Error from '@renderer/components/Error'
 import { MutableRefObject, useEffect, useRef } from 'react'
 import useignoreMouseEvents from '@renderer/hooks/useignoreMouseEvents'
+import { applyThemeToCSS, useThemeStore } from '@renderer/store/themeStore'
 
 // <StyleSheetManager shouldForwardProp={...}>
 function Home(): JSX.Element {
+  const { theme } = useThemeStore()
+
   const mainRef = useRef<HTMLDivElement | null>(null)
 
   const { setIgnoreMouseEvents } = useignoreMouseEvents()
 
   useEffect(() => {
+    applyThemeToCSS(theme)
     setIgnoreMouseEvents(mainRef as MutableRefObject<HTMLDivElement>)
-  }, [])
+  }, [theme])
 
   const { register } = useShortCut()
   register('search', 'CommandOrControl+Shift+;')

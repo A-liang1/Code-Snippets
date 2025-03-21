@@ -1,3 +1,5 @@
+// npm install --save-dev electron-rebuild
+// npx electron-rebuild
 import Database, * as BetterSqlite3 from 'better-sqlite3'
 import { app } from 'electron'
 import { resolve } from 'node:path'

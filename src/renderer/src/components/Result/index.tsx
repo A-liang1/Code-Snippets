@@ -9,7 +9,10 @@ import useSelect from '@renderer/hooks/useSelect'
 export default function Result() {
   const { data, id, selectItem } = useSelect()
   return (
-    <main className="result">
+    <main
+      className="result"
+      style={{ background: 'var(--searchBackground)', color: 'var(--searchText)' }}
+    >
       {data.map((item) => (
         // <Div isActive={currentIndex === index} key={item.id}>
         //   {item.content}
