@@ -1,14 +1,9 @@
 .content-page {
-  @apply h-screen text-sm text-slate-700;
-
-  display: grid;
-  grid-template: 'list content' auto / 150px auto;
-
-  .list {
-    @apply border-r bg-slate-50;
-    grid-area: list;
+  h1 {
+    @apply text-base font-bold text-slate-600 opacity-95;
   }
+
   .content {
-    grid-area: content;
+    @apply text-sm text-slate-500 leading-relaxed;
   }
 }

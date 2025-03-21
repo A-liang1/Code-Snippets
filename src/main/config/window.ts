@@ -6,13 +6,13 @@ import url from 'node:url'
 
 export function createWindow(): BrowserWindow {
   const { width: winWidth } = screen.getPrimaryDisplay().workAreaSize
-  const width = 1250
+  const width = 800
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width,
-    height: 750,
-    x: winWidth - width,
-    y: 0,
+    height: 700,
+    x: -800,
+    y: 50,
     show: false,
     frame: true,
     transparent: false,
@@ -40,7 +40,7 @@ export function createWindow(): BrowserWindow {
   // HMR for renderer base on electron-vite cli.
   // Load the remote URL for development or the local html file for production.
   if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
-    mainWindow.loadURL(process.env['ELECTRON_RENDERER_URL'] + '/#config')
+    mainWindow.loadURL(process.env['ELECTRON_RENDERER_URL'] + '/#config/category')
   } else {
     mainWindow.loadURL(
       url.format({
@@ -51,7 +51,7 @@ export function createWindow(): BrowserWindow {
         // protocol 后面需要两个 /
         slashes: true,
         // hash 的值
-        hash: 'config'
+        hash: 'config/category'
       })
     )
   }

@@ -1,5 +1,5 @@
 import { db } from './connect'
-
+import { Random } from 'mockjs'
 db.exec(`
   create table if not exists categories (
     id integer primary key autoincrement not null,
@@ -18,10 +18,16 @@ db.exec(`
   );
 `)
 
-db.exec(`
-  INSERT INTO categories (name,created_at) VALUES('hd',datetime());
-`)
-
-db.exec(`
-  INSERT INTO contents (title,content,category_id,created_at) VALUES('react','zustand',1,datetime())
-`)
+// for (let i = 0; i < 5; ++i) {
+//   const name = Random.title(5, 15)
+//   db.exec(`
+//   INSERT INTO categories (name,created_at) VALUES('${name}',datetime());
+// `)
+//   for (let j = 1; j < 10; ++j) {
+//     const title = Random.title(5, 10)
+//     const content = Random.paragraph(5, 10)
+//     db.exec(`
+//       INSERT INTO contents (title,content,category_id,created_at) VALUES('${title}','${content}',${i},datetime())
+//     `)
+//   }
+// }
