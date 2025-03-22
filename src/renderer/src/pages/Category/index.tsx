@@ -16,6 +16,13 @@ export function Category() {
           </div>
         </NavLink>
 
+        <NavLink to={`/config/category/contentList/0`} end className="font-bold">
+          <div className="flex items-center gap-1">
+            <AllApplication theme="outline" size="14" strokeWidth={3} />
+            <div className="truncate">未分类</div>
+          </div>
+        </NavLink>
+
         {categories.map((category) => (
           <NavLink
             to={`/config/category/contentList/${category.id}`}

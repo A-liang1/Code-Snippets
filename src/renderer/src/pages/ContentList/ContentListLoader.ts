@@ -8,7 +8,7 @@ export default async ({ params, request }) => {
     sql += ` where title like @searchWord order by id desc`
     return await window.api.sql(sql, 'findAll', { searchWord: `%${searchWord}%` })
   }
-  if (cid) {
+  if (cid !== undefined) {
     sql += `where category_id=${cid}`
   }
   sql += ` order by id desc`

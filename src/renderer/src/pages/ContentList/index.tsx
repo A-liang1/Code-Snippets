@@ -42,7 +42,7 @@ export function ContentList() {
           >
             <div className="truncate">{content.title}</div>
             <div className="text-xs placeholder-opacity-80">
-              {dayjs(content.created_at).format('YYYY/MM/DD')}
+              {dayjs(content.created_at).format('YY/MM/DD')}
             </div>
           </NavLink>
         ))}
