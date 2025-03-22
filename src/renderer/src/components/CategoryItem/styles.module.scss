@@ -1,5 +1,7 @@
+$height: 35px;
 @mixin commonLink() {
   @apply p-2 truncate cursor-pointer block mx-1;
+  height: $height;
 }
 
 .link {
@@ -10,4 +12,12 @@
 .active {
   @include commonLink();
   @apply bg-pink-400 text-white rounded-lg mx-1;
+}
+
+.input {
+  height: $height;
+  @apply w-full px-2;
+  input {
+    @apply h-full w-full px-2 rounded-md border outline-none;
+  }
 }

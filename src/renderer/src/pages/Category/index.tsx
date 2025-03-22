@@ -2,7 +2,7 @@ import './category.scss'
 import { Outlet, useLoaderData } from 'react-router-dom'
 import { CategoryItem } from '@renderer/components/CategoryItem'
 import { QuickNav } from '@renderer/components/QuickNav'
-import { FooterMenu } from '@renderer/components/FotterMenu'
+import { FooterMenu } from '@renderer/components/FooterMenu'
 
 export function Category() {
   const categories = useLoaderData() as CategoryType[]
