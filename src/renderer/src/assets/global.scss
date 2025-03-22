@@ -41,7 +41,6 @@
 }
 
 body {
-  // @apply bg-black;
   @apply w-screen h-screen;
 }
 
@@ -55,4 +54,11 @@ select,
 textarea,
 option {
   -webkit-app-region: no-drag;
+}
+
+.contextMenu {
+  @apply rounded-md;
+  button {
+    @apply bg-[#2c3e50] text-white px-2 py-1 hover:bg-[#34495e];
+  }
 }
