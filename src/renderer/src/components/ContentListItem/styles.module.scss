@@ -1,0 +1,12 @@
+@mixin CommonLink() {
+  @apply truncate p-1 cursor-pointer flex items-center gap-1 border-b mx-2 my-1;
+}
+.link {
+  @include CommonLink();
+  @apply hover:bg-pink-50;
+}
+
+.active {
+  @include CommonLink();
+  @apply bg-pink-300 text-white rounded-lg border-none;
+}

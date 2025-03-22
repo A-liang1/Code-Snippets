@@ -7,12 +7,6 @@
   .list {
     @apply border-r overflow-y-auto;
     grid-area: list;
-    a {
-      @apply truncate p-1 cursor-pointer flex items-center gap-1 border-b mx-2 my-1;
-      &.active {
-        @apply bg-pink-300 text-white rounded-xl;
-      }
-    }
   }
   .content {
     grid-area: content;

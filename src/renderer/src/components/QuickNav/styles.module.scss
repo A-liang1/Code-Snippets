@@ -1,0 +1,12 @@
+@mixin commonLink() {
+  @apply p-2 truncate cursor-pointer block mx-1 font-bold;
+}
+
+.link {
+  @include commonLink();
+}
+
+.active {
+  @include commonLink();
+  @apply bg-pink-400 text-white rounded-lg mx-1;
+}

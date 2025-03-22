@@ -9,12 +9,6 @@
   .categories {
     @apply border-r bg-slate-100 text-sm text-slate-700 overflow-y-auto;
     grid-area: categories;
-    a {
-      @apply p-1 py-2 truncate cursor-pointer block;
-      &.active {
-        @apply bg-pink-400 text-white rounded-lg mx-1;
-      }
-    }
   }
   .nav {
     @apply border-r border-t bg-slate-100 flex justify-evenly items-center;
