@@ -7,6 +7,8 @@ import Home from '@renderer/pages/Home'
 import { Content } from '@renderer/pages/Content'
 import { createHashRouter } from 'react-router-dom'
 import ContentLoader from '@renderer/pages/Content/ContentLoader'
+import ContentAction from '@renderer/pages/Content/ContentAction'
+import { Welcome } from '@renderer/pages/Welcome'
 
 const router = createHashRouter([
   {
@@ -23,13 +25,15 @@ const router = createHashRouter([
         loader: CategoryLoader,
         children: [
           {
-            path: 'contentList/:cid',
+            path: 'contentList/:cid?',
             loader: ContentListLoader,
             element: <ContentList />,
             children: [
+              { index: true, element: <Welcome /> },
               {
                 path: 'content/:id',
                 loader: ContentLoader,
+                action: ContentAction,
                 element: <Content />
               }
             ]

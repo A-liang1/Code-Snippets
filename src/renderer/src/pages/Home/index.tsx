@@ -20,7 +20,7 @@ function Home(): JSX.Element {
   useEffect(() => {
     applyThemeToCSS(themeType)
     setIgnoreMouseEvents(mainRef as MutableRefObject<HTMLDivElement>)
-    // window.api.openConfigWindow()
+    window.api.openConfigWindow()
   }, [themeType])
 
   const { register } = useShortCut()

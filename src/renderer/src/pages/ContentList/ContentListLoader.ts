@@ -1,3 +1,9 @@
 export default async ({ params }) => {
-  return await window.api.sql(`select * from contents where category_id=${params.cid}`, 'findAll')
+  const { cid } = params
+  let sql = `select * from contents `
+  if (cid) {
+    sql += `where category_id=${cid}`
+  }
+  sql += ` order by id desc`
+  return await window.api.sql(sql, 'findAll')
 }

@@ -2,13 +2,13 @@
   @apply h-screen text-sm text-slate-700;
 
   display: grid;
-  grid-template: 'list content' auto / 150px auto;
+  grid-template: 'list content' auto / 200px auto;
 
   .list {
-    @apply border-r bg-slate-50 overflow-y-auto;
+    @apply border-r overflow-y-auto;
     grid-area: list;
     a {
-      @apply block truncate p-1 cursor-pointer;
+      @apply truncate p-1 cursor-pointer flex items-center gap-1 border-b mx-1;
       &.active {
         @apply bg-pink-300 text-white rounded-xl mx-1;
       }

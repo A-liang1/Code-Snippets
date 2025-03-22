@@ -4,7 +4,7 @@
   display: grid;
   grid-template:
     'categories content' auto
-    'nav content' 50px/120px auto;
+    'nav content' 50px/150px auto;
 
   .categories {
     @apply border-r bg-slate-100 text-sm text-slate-700 overflow-y-auto;

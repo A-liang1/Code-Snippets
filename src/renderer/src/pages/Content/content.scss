@@ -1,9 +1,11 @@
 .content-page {
-  h1 {
-    @apply text-base font-bold text-slate-600 opacity-95 overflow-y-auto;
+  @apply h-screen;
+  display: grid;
+  grid-template-rows: 50px 1fr;
+  input {
+    @apply text-lg outline-none bg-slate-50 p-3;
   }
-
-  .content {
-    @apply text-sm text-slate-500 leading-relaxed;
+  textarea {
+    @apply border-t pt-5 outline-none text-sm placeholder-opacity-90 bg-slate-50 p-3;
   }
 }
