@@ -1,8 +1,8 @@
-import { DeleteOne, FolderCode } from '@icon-park/react'
-import { NavLink, useFetcher, useSubmit } from 'react-router-dom'
+import { FolderCode } from '@icon-park/react'
+import { NavLink, useFetcher } from 'react-router-dom'
 import styles from './styles.module.scss'
-import { useContextMenu } from 'mantine-contextmenu'
 import { useStore } from '@renderer/store/useStore'
+import useCategory from '@renderer/hooks/useCategory'
 
 interface Props {
   category: CategoryType
@@ -12,9 +12,8 @@ export const CategoryItem = ({ category }: Props) => {
   const editCategoryId = useStore((state) => state.editCategoryId)
   const setEditCategoryId = useStore((state) => state.setEditCategoryId)
 
-  // const submit = useSubmit()
+  const { onContextMenu, dragHandle } = useCategory(category)
   const fether = useFetcher()
-  const { showContextMenu } = useContextMenu()
 
   const linkStyle = (isActive: boolean) => (isActive ? styles.active : styles.link)
 
@@ -36,23 +35,13 @@ export const CategoryItem = ({ category }: Props) => {
         </div>
       ) : (
         <NavLink
-          onDoubleClick={() => setEditCategoryId(category.id)}
           to={`/config/category/contentList/${category.id}`}
           key={category.id}
+          data-category-id={category.id}
           className={({ isActive }) => linkStyle(isActive)}
-          onContextMenu={showContextMenu(
-            [
-              {
-                key: 'remove',
-                title: '删除分类',
-                icon: <DeleteOne theme="outline" size="18" strokeWidth={3} />,
-                onClick: () => {
-                  submit({ id: category.id }, { method: 'DELETE' })
-                }
-              }
-            ],
-            { className: 'contextMenu' }
-          )}
+          onDoubleClick={() => setEditCategoryId(category.id)}
+          onContextMenu={onContextMenu()}
+          {...dragHandle}
         >
           <div className="flex items-center gap-1">
             <FolderCode theme="outline" size="14" strokeWidth={3} />

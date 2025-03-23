@@ -19,6 +19,10 @@ export const ContentListItem = ({ content }: Props) => {
       to={`/config/category/contentList/${content.category_id}/content/${content.id}`}
       key={content.id}
       className={({ isActive }) => linkStyle(isActive)}
+      onDragStart={(e) => {
+        e.dataTransfer.setData('id', String(content.id))
+        console.log(content.id)
+      }}
       onContextMenu={showContextMenu(
         [
           {
