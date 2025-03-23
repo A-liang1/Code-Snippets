@@ -1,12 +1,11 @@
-import { DataType } from '@renderer/data'
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
 
 interface StateProps {
   config: ConfigDataType
   setConfig: (config: ConfigDataType) => void
-  data: DataType[]
-  setData: (data: DataType[]) => void
+  data: ContentType[]
+  setData: (data: ContentType[]) => void
   search: string
   setSearch: (search: string) => void
   error: string

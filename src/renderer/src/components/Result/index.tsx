@@ -22,7 +22,7 @@ export default function Result() {
           className={classNames({ active: id === item.id })}
           onClick={() => selectItem(item.id)}
         >
-          {item.content}
+          {item.title}
         </div>
       ))}
     </main>

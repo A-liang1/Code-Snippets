@@ -17,24 +17,28 @@ export default () => {
     (e: KeyboardEvent) => {
       if (data.length === 0) return
       switch (e.code) {
-        case 'ArrowUp':
-          {
-            e.preventDefault()
-            const index = data.findIndex((item) => item.id === id)
-            setId(data[index - 1]?.id || data[data.length - 1].id)
-          }
-          // setCurrentIndex((pre) => (pre - 1 < 0 ? data.length - 1 : pre - 1))
+        case 'ArrowUp': {
+          if (data.length === 0) return
+          e.preventDefault()
+          const index = data.findIndex((item) => item.id === id)
+          setId(data[index - 1]?.id || data[data.length - 1].id)
           break
-        case 'ArrowDown':
-          {
-            e.preventDefault()
-            const index = data.findIndex((item) => item.id === id)
-            setId(data[index + 1]?.id || data[0].id)
-          }
-          // setCurrentIndex((pre) => (pre + 1 > data.length - 1 ? 0 : pre + 1))
+        }
+        case 'ArrowDown': {
+          if (data.length === 0) return
+          e.preventDefault()
+          const index = data.findIndex((item) => item.id === id)
+          setId(data[index + 1]?.id || data[0].id)
           break
+        }
         case 'Enter': {
+          window.api.closeWindow('search')
           selectItem(id)
+          break
+        }
+        case 'Escpe': {
+          window.api.closeWindow('search')
+          break
         }
       }
     },
