@@ -36,8 +36,7 @@ export function createWindow(options: OptionsType): BrowserWindow {
   // 忽略鼠标事件
   // mainWindow.setIgnoreMouseEvents(true, { forward: true })
   // 打开调试窗口
-  // if (is.dev && options.openDevTools)
-  mainWindow.webContents.openDevTools()
+  if (is.dev && options.openDevTools) mainWindow.webContents.openDevTools()
 
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()

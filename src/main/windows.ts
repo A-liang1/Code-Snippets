@@ -5,17 +5,22 @@ export const config = {
   search: {
     id: 0,
     options: {
-      hash: ''
+      hash: '',
+      openDevTools: true
     }
   },
   config: {
     id: 0,
     options: {
+      openDevTools: true,
       width: 1300,
       height: 700,
+      x: -850,
+      y: 1000,
       frame: true,
       transparent: false,
       hash: '/#config/category/contentList'
+      // hash: '/#config'
     }
   }
 } as Record<WindowNameType, { id: number; options: OptionsType }>

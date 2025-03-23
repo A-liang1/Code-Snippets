@@ -2,6 +2,7 @@ $height: 35px;
 @mixin commonLink() {
   @apply p-2 truncate cursor-pointer block m-1;
   height: $height;
+  -webkit-user-drag: none;
 }
 
 .link {

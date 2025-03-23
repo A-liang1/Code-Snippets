@@ -19,9 +19,22 @@ db.exec(`
   );
 `)
 
+db.exec(`
+  create table if not exists config (
+    id integer primary key autoincrement not null,
+    content text not null
+  )
+`)
+
 function initData() {
   const isInit = findOne('select * from contents')
+
+  // db.exec(`
+  //   INSERT INTO config (id, content) VALUES(1, '{"shortCut":"","databaseDirectory":""}')
+  // `)
+
   if (isInit) return
+
   for (let i = 1; i <= 10; ++i) {
     const name = Random.title(5, 15)
     db.exec(`

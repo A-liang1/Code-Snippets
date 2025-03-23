@@ -3,7 +3,6 @@ import Result from '@renderer/components/Result'
 // import { CodeProvider } from '@renderer/context/codeContext'
 import { StyleSheetManager } from 'styled-components'
 import isPropValid from '@emotion/is-prop-valid'
-import useShortCut from '@renderer/hooks/useShortCut'
 import Error from '@renderer/components/Error'
 import { MutableRefObject, useEffect, useRef } from 'react'
 import useignoreMouseEvents from '@renderer/hooks/useignoreMouseEvents'
@@ -21,9 +20,6 @@ function Home(): JSX.Element {
     applyThemeToCSS(themeType)
     setIgnoreMouseEvents(mainRef as MutableRefObject<HTMLDivElement>)
   }, [themeType])
-
-  const { register } = useShortCut()
-  register('search', 'CommandOrControl+Shift+;')
 
   return (
     <>

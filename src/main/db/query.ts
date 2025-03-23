@@ -4,8 +4,8 @@ export const findAll = (sql: string, params = {}) => {
   return db.prepare(sql).all(params)
 }
 
-export const findOne = (sql: string) => {
-  return db.prepare(sql).get()
+export const findOne = (sql: string, params = {}) => {
+  return db.prepare(sql).get(params)
 }
 
 export const insert = (sql: string) => {
@@ -18,4 +18,9 @@ export const update = (sql: string, params: Record<string, any>) => {
 
 export const del = (sql: string, params = {}) => {
   return db.prepare(sql).run(params).changes
+}
+
+export const config = () => {
+  const res = findOne(`select * from config where id=1`) as { content: string }
+  return JSON.parse(res.content)
 }
