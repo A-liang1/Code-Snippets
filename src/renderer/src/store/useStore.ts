@@ -3,6 +3,8 @@ import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
 
 interface StateProps {
+  config: ConfigDataType
+  setConfig: (config: ConfigDataType) => void
   data: DataType[]
   setData: (data: DataType[]) => void
   search: string
@@ -18,6 +20,8 @@ interface StateProps {
 export const useStore = create(
   persist<StateProps>(
     (set) => ({
+      config: { databaseDirectory: '', shortCut: '' },
+      setConfig: (config) => set({ config }),
       data: [],
       setData: (data) => set({ data }),
       search: '',

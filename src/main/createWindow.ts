@@ -7,6 +7,7 @@ import url from 'node:url'
 export interface OptionsType extends Partial<BrowserWindowConstructorOptions> {
   openDevTools?: boolean
   hash?: string
+  initShow?: boolean
 }
 
 export function createWindow(options: OptionsType): BrowserWindow {
@@ -39,7 +40,8 @@ export function createWindow(options: OptionsType): BrowserWindow {
   if (is.dev && options.openDevTools) mainWindow.webContents.openDevTools()
 
   mainWindow.on('ready-to-show', () => {
-    mainWindow.show()
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    options.initShow && mainWindow.show()
   })
 
   mainWindow.webContents.setWindowOpenHandler((details) => {

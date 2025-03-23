@@ -5,22 +5,37 @@ export const config = {
   search: {
     id: 0,
     options: {
+      initShow: true,
       hash: '',
-      openDevTools: true
+      openDevTools: false
+    }
+  },
+  code: {
+    id: 0,
+    options: {
+      initShow: false,
+      openDevTools: false,
+      width: 1300,
+      height: 700,
+      x: 0,
+      y: 100,
+      frame: true,
+      transparent: false,
+      hash: '/#config/category/contentList'
     }
   },
   config: {
     id: 0,
     options: {
+      initShow: false,
       openDevTools: true,
-      width: 1300,
-      height: 700,
-      x: -850,
-      y: 1000,
+      width: 600,
+      height: 400,
+      x: 0,
+      y: 100,
       frame: true,
       transparent: false,
-      hash: '/#config/category/contentList'
-      // hash: '/#config'
+      hash: '/#config'
     }
   }
 } as Record<WindowNameType, { id: number; options: OptionsType }>

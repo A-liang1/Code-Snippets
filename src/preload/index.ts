@@ -23,6 +23,15 @@ const api = {
   },
   closeWindow: (name: WindowNameType) => {
     ipcRenderer.send('closeWindow', name)
+  },
+  selectDatabaseDirectory: () => {
+    return ipcRenderer.invoke('selectDatabaseDirectory')
+  },
+  setDatabaseDirectory: (path: string) => {
+    ipcRenderer.send('setDatabaseDirectory', path)
+  },
+  initTable: () => {
+    ipcRenderer.send('initTable')
   }
 }
 

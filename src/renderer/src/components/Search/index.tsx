@@ -9,7 +9,7 @@ export default function Search() {
   const { toggleTheme } = useThemeStore()
 
   const openConfigWindow = () => {
-    window.api.openWindow('config')
+    window.api.openWindow('code')
   }
 
   const items: MenuProps['items'] = [
@@ -59,7 +59,12 @@ export default function Search() {
           }}
         />
       </section>
-      {/* <section className="text-center text-red-500 text-sm">代码片段</section> */}
+      <section className="nodrag text-center text-red-500 text-sm">
+        代码片段
+        <span className="text-blue-600" onClick={() => window.api.openWindow('config')}>
+          配置
+        </span>
+      </section>
     </main>
   )
 }
