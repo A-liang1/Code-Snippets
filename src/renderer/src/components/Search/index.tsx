@@ -9,7 +9,7 @@ export default function Search() {
   const { toggleTheme } = useThemeStore()
 
   const openConfigWindow = () => {
-    window.api.openConfigWindow()
+    window.api.openWindow('config')
   }
 
   const items: MenuProps['items'] = [

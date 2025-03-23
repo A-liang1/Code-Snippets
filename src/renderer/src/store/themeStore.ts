@@ -23,7 +23,7 @@ if (storedThemeType) {
       cachedThemeType = parsedThemeType
     }
   } catch {
-    cachedThemeType = 'light'
+    cachedThemeType = 'pink'
   }
 }
 

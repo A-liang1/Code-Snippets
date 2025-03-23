@@ -1,0 +1,14 @@
+.setting-page {
+  @apply bg-slate-100 h-screen p-5;
+
+  h1 {
+    @apply flex justify-center text-2xl font-bold;
+  }
+
+  section {
+    h5 {
+      @apply text-xl font-bold mb-2 text-slate-700 placeholder-opacity-90;
+    }
+    @apply border p-3 rounded-md bg-white my-5;
+  }
+}

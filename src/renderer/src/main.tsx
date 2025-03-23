@@ -5,13 +5,6 @@ import '@renderer/assets/global.scss'
 import { RouterProvider } from 'react-router-dom'
 import router from './router'
 import { applyThemeToCSS } from './store/themeStore'
-// 右键菜单
-import { ColorSchemeScript, MantineProvider } from '@mantine/core'
-import { ContextMenuProvider } from 'mantine-contextmenu'
-
-import '@mantine/core/styles.layer.css'
-import 'mantine-contextmenu/styles.layer.css'
-// import './layout.css'
 
 // 初始化主题
 const storedThemeType = localStorage.getItem('themeType')
@@ -28,11 +21,6 @@ if (storedThemeType) {
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    {' '}
-    <MantineProvider defaultColorScheme="auto">
-      <ContextMenuProvider>
-        <RouterProvider router={router} />
-      </ContextMenuProvider>
-    </MantineProvider>
+    <RouterProvider router={router} />
   </React.StrictMode>
 )

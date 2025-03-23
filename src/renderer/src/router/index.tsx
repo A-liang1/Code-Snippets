@@ -1,9 +1,9 @@
 import { Category } from '@renderer/pages/Category'
 import CategoryLoader from '@renderer/pages/Category/CategoryLoader'
-import Config from '@renderer/pages/Config'
+import Config from '@renderer/layout/Config'
 import { ContentList } from '@renderer/pages/ContentList'
 import ContentListLoader from '@renderer/pages/ContentList/ContentListLoader'
-import Home from '@renderer/pages/Home'
+import Home from '@renderer/layout/Home'
 import { Content } from '@renderer/pages/Content'
 import { createHashRouter } from 'react-router-dom'
 import ContentLoader from '@renderer/pages/Content/ContentLoader'
@@ -11,6 +11,7 @@ import ContentAction from '@renderer/pages/Content/ContentAction'
 import { Welcome } from '@renderer/pages/Welcome'
 import ContentListAction from '@renderer/pages/ContentList/ContentListAction'
 import CategoryAction from '@renderer/pages/Category/CategoryAction'
+import { Setting } from '@renderer/pages/Setting'
 
 const router = createHashRouter([
   {
@@ -21,6 +22,10 @@ const router = createHashRouter([
     path: '/config',
     element: <Config />,
     children: [
+      {
+        index: true,
+        element: <Setting />
+      },
       {
         path: 'category',
         element: <Category />,
