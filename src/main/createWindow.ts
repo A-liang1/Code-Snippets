@@ -17,8 +17,6 @@ export function createWindow(options: OptionsType): BrowserWindow {
       {
         width: 400,
         height: 400,
-        x: 500,
-        y: 350,
         show: false,
         frame: false,
         transparent: true,
@@ -63,7 +61,7 @@ export function createWindow(options: OptionsType): BrowserWindow {
         // protocol 后面需要两个 /
         slashes: true,
         // hash 的值
-        hash: 'config/category/contentList'
+        hash: options.hash?.substring(1)
       })
     )
   }

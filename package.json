@@ -3,15 +3,17 @@
     "appId": "com.example.code-snippets",
     "productName": "CodeSnippets",
     "directories": {
-      "output": "dist_new"
+      "output": "dist_simple"
     },
     "win": {
-      "target": [
-        "portable",
-        "zip"
-      ],
+      "target": "portable",
       "artifactName": "${productName}-${version}-${arch}.${ext}"
-    }
+    },
+    "asar": false,
+    "files": [
+      "out/**/*",
+      "resources/**/*"
+    ]
   },
   "name": "code-snippets",
   "version": "1.0.0",
@@ -29,10 +31,9 @@
     "dev": "electron-vite dev",
     "build": "npm run typecheck && electron-vite build",
     "postinstall": "electron-builder install-app-deps",
-    "build:unpack": "npm run build && electron-builder --dir",
-    "build:win": "npm run build && electron-builder --win",
-    "build:mac": "electron-vite build && electron-builder --mac",
-    "build:linux": "electron-vite build && electron-builder --linux"
+    "build:win": "npm run build && electron-builder -w portable --config.npmRebuild=false",
+    "build:run": "npm run build && electron .",
+    "build:simple": "npm run build && mkdir -p simple_dist && xcopy /E /Y out simple_dist\\out\\ && xcopy /E /Y node_modules\\electron\\dist simple_dist\\ && copy package.json simple_dist\\"
   },
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.1",

@@ -15,10 +15,8 @@ export const config = {
     options: {
       initShow: false,
       openDevTools: false,
-      width: 1300,
-      height: 700,
-      x: 0,
-      y: 100,
+      width: 1060,
+      height: 600,
       frame: true,
       transparent: false,
       hash: '/#config/category/contentList'
@@ -28,11 +26,9 @@ export const config = {
     id: 0,
     options: {
       initShow: false,
-      openDevTools: true,
-      width: 600,
-      height: 400,
-      x: 0,
-      y: 100,
+      openDevTools: false,
+      width: 500,
+      height: 350,
       frame: true,
       transparent: false,
       hash: '/#config'

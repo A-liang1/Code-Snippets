@@ -16,7 +16,8 @@ export default () => {
       'findAll',
       { content: `%${e.target.value}%` }
     )
-    setData(data)
+    if (e.target.value === '') setData([])
+    else setData(data)
   }
   return { search, handleSearch }
 }

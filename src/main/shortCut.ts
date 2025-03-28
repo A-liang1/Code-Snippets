@@ -1,6 +1,5 @@
 import { app, dialog, globalShortcut, ipcMain, IpcMainInvokeEvent } from 'electron'
 import { getWindowByName } from './windows'
-import { config } from './db/query'
 
 // 注册一个快捷键监听器
 ipcMain.handle('shortCut', (_event: IpcMainInvokeEvent, type: 'search', shortCut?: string) => {
@@ -29,8 +28,3 @@ app.on('will-quit', () => {
   // globalShortcut.unregister('CommandOrControl+Shift+;')
   globalShortcut.unregisterAll()
 })
-
-export const registerAppGlobShortCut = () => {
-  const configData = config() as { shortCut: string }
-  if (configData.shortCut) registerSearchShortCut(configData.shortCut)
-}

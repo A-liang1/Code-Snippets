@@ -1,5 +1,4 @@
 import { db } from './connect'
-import { Random } from 'mockjs'
 import { findOne } from './query'
 export function initTable() {
   db().exec(`
@@ -20,36 +19,25 @@ export function initTable() {
   );
 `)
 
-  //   db().exec(`
-  //   create table if not exists config (
-  //     id integer primary key autoincrement not null,
-  //     content text not null
-  //   )
-  // `)
-
   initData()
 }
 
 function initData() {
   const isInit = findOne('select * from contents')
 
-  // db().exec(`
-  //   INSERT INTO config (id, content) VALUES(1, '{"shortCut":"","databaseDirectory":""}')
-  // `)
-
   if (isInit) return
 
-  for (let i = 1; i <= 10; ++i) {
-    const name = Random.title(5, 15)
-    db().exec(`
-  INSERT INTO categories (name,created_at) VALUES('${name}',datetime());
-`)
-    for (let j = 1; j < 10; ++j) {
-      const title = Random.title(5, 10)
-      const content = Random.paragraph(5, 10)
-      db().exec(`
-      INSERT INTO contents (title,content,category_id,created_at) VALUES('${title}','${content}',${i},datetime())
-    `)
-    }
-  }
+  //   for (let i = 1; i <= 2; ++i) {
+  //     const name = Random.title(5, 15)
+  //     db().exec(`
+  //   INSERT INTO categories (name,created_at) VALUES('${name}',datetime());
+  // `)
+  //     for (let j = 1; j < 2; ++j) {
+  //       const title = Random.title(5, 10)
+  //       const content = Random.paragraph(5, 10)
+  //       db().exec(`
+  //       INSERT INTO contents (title,content,category_id,created_at) VALUES('${title}','${content}',${i},datetime())
+  //     `)
+  //     }
+  //   }
 }

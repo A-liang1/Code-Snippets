@@ -1,4 +1,3 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
 import '@renderer/assets/tailwind.css'
 import '@renderer/assets/global.scss'
